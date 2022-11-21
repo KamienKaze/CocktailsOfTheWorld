@@ -4,12 +4,12 @@
         <!-- Primary brand color. -->
         <item name="android:colorBackground">@color/beige</item>
         <item name="colorPrimaryVariant">@color/maroon</item>
-        <item name="colorOnPrimary">#000000</item>
+        <item name="colorOnPrimary">@color/maroon</item>
 
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#000000</item>
-        <item name="colorSecondaryVariant">#000000</item>
-        <item name="colorOnSecondary">#000000</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorSecondaryVariant">@color/orange</item>
+        <item name="colorOnSecondary">@color/orange</item>
         <!-- Status bar color. -->
 
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
