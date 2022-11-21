@@ -6,8 +6,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.TextViewCompat;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -22,11 +25,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<JSONObject> jsonObjects = new ArrayList<>();
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,26 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        linearLayout = findViewById(R.id.layout_list);
+
         new getDrinks().start();
+
+
+    }
+
+    public void loadDrinkIcons(ArrayList<JSONObject> drinks) {
+
+        for(int i = 0; i < drinks.size(); i++) {
+
+
+
+        }
+
+
+        View view = getLayoutInflater().inflate(R.layout.drink_icon, null);
+
+
+
     }
 
     class getDrinks extends Thread {
