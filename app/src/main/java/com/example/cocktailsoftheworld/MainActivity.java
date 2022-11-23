@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -188,11 +189,26 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         linearLayout.addView(icon);
+
+                        icon.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(MainActivity.this, DrinkPage.class);
+                                intent.putExtra("name", cocktail.getName());
+                                intent.putExtra("imgSrc", cocktail.getImageUrl().toString());
+                                intent.putExtra("isAlcoholic", cocktail.getAlcoholic());
+                                intent.putExtra("categories", cocktail.getCategory());
+                                intent.putExtra("glass", cocktail.getGlass());
+                                intent.putExtra("instructions", cocktail.getInstructions());
+                                intent.putExtra("ingredients", cocktail.getIngredients());
+                                intent.putExtra("measures", cocktail.getMeasures());
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
             }
 
         }
     }
-
 }
