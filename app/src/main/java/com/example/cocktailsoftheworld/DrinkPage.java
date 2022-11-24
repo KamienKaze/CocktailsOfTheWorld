@@ -10,7 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.io.InputStream;
@@ -43,17 +45,28 @@ public class DrinkPage extends AppCompatActivity {
         String categories = intent.getStringExtra("categories");
         String glass = intent.getStringExtra("glass");
         String instructions = intent.getStringExtra("instructions");
-        ArrayList<String> ingridients = intent.getStringArrayListExtra("ingredients");
+        ArrayList<String> ingredients = intent.getStringArrayListExtra("ingredients");
         ArrayList<String> measures = intent.getStringArrayListExtra("measures");
 
         TextView textName = findViewById(R.id.textName);
         imageView = findViewById(R.id.imageViewThumb);
-        //TextView textAlcoholic = findViewById(R.id.textIsAlcoholic);
-        //TextView textCategories = findViewById(R.id.textCategories);
-        //TextView textGlass = findViewById(R.id.textGlass);
-        //TextView textInstructions = findViewById(R.id.textInstructions);
+        TextView textCategories = findViewById(R.id.textCategory);
+        TextView textGlass = findViewById(R.id.textGlass);
+        TextView textInstructions = findViewById(R.id.textInstruction);
+        TableLayout tableLayout = findViewById(R.id.table);
 
         //tabela
+        for(int i = 0; i < ingredients.size(); i++) {
+            ViewGroup row = (ViewGroup) getLayoutInflater().inflate(R.layout.table_row, null);
+
+            TextView ingredient = (TextView) row.getChildAt(0);
+            TextView measure = (TextView) row.getChildAt(1);
+
+            ingredient.setText(ingredients.get(i));
+            measure.setText(measures.get(i));
+
+            tableLayout.addView(row);
+        }
 
 
         textName.setText(name);
@@ -64,10 +77,9 @@ public class DrinkPage extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //textAlcoholic.setText(isAlcoholic);
-        //textCategories.setText(categories);
-        //textGlass.setText(glass);
-        //textInstructions.setText(instructions);
+        textCategories.setText(categories + ", " + isAlcoholic);
+        textGlass.setText(glass);
+        textInstructions.setText(instructions);
 
     }
 

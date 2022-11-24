@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
 
             char startingLetter = 'a';
-            int count = 0;
 
             while (startingLetter <= 'z') {
 
@@ -155,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Load all images to cocktail icons
     class loadAllIcons extends Thread {
 
         @Override
